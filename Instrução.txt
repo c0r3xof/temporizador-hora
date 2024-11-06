@@ -1,0 +1,3 @@
+Abra o index.html
+
+Necessita do autohotkey para abrir e ficar sempre visivel na frente

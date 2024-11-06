@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horario</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="manifest" href="assets/json/manifest.json">
+  <link rel="shortcut icon" href="assets/imgs/favicon.png" type="image/x-icon">
+</head>
+<body>
+  <div id="currentTime">Hora atual: 00:00</div>
+  <div id="timerLabel">Defina o tempo</div>
+
+  <form id="timerForm">
+    <label for="hoursInput">Horas: </label>
+    <input type="number" id="hoursInput" min="0" required>
+    <label for="minutesInput">Minutos: </label>
+    <input type="number" id="minutesInput" min="0" max="59" required>
+    <button type="button" onclick="startTimer()">Iniciar</button>
+  </form>
+
+  <div id="timer" style="display:none;">00:00</div>
+
+  <script src="assets/js/script.js"></script>
+  <script>
+    // Registro do Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('assets/js/sw.js')
+        .then(function(registration) {
+          console.log('Service Worker registrado com sucesso:', registration);
+        })
+        .catch(function(error) {
+          console.error('Falha ao registrar o Service Worker:', error);
+        });
+    }
+
+    // Gerenciamento do evento para permitir que o usuário instale o PWA
+    let deferredPrompt; 
+    window.addEventListener('beforeinstallprompt', (event) => {
+      // Previne o comportamento padrão (exibir o prompt de instalação)
+      event.preventDefault();
+      deferredPrompt = event;
+      const installButton = document.createElement('button');
+      installButton.innerText = 'Instalar App';
+      document.body.appendChild(installButton);
+
+      installButton.addEventListener('click', () => {
+        deferredPrompt.prompt();  // Exibe o prompt de instalação
+        deferredPrompt.userChoice.then((choiceResult) => {
+          console.log(choiceResult.outcome);
+          deferredPrompt = null;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

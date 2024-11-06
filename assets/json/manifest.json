@@ -1,0 +1,21 @@
+{
+  "name": "Horário",
+  "short_name": "Horário",
+  "description": "Aplicativo de temporizador simples",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#00A859",
+  "theme_color": "#007E4D",
+  "icons": [
+    {
+      "src": "/assets/imgs/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/imgs/icon-large.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
