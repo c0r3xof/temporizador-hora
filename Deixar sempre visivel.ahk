@@ -1,5 +1,5 @@
 ; Defina o título da janela que você espera (título exato ou parte do título da aba do Chrome)
-windowTitle := "Temporizador"  ; O título exato ou parte dele
+windowTitle := "Horario"  ; O título exato ou parte dele
 
 ; Defina o modo de correspondência de título (parcial)
 SetTitleMatchMode, 2 ; Permite correspondência parcial no título da janela
